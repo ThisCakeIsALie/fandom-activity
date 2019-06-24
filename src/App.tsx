@@ -1,10 +1,12 @@
 import React from "react";
 import MenuButton from "./small/MenuButton";
 import Container from "@material-ui/core/Container";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
 import MainContent from "./large/MainContent";
+import DrawerContent from "./medium/DrawerContent";
+import { Theme, useTheme } from "@material-ui/core/styles";
 
-const useStyle = makeStyles({
+const useStyles = makeStyles((theme: Theme) => createStyles({
   menuButton: {
     position: "absolute",
     zIndex: 100
@@ -12,24 +14,24 @@ const useStyle = makeStyles({
   content: {
     width: "100%",
     height: "100vh"
+  },
+  drawer: {
+    [theme.breakpoints.up("md")]: {
+      width: "25%"
+    },
+    width: "60%"
   }
-});
-/*
-      <SwipeableDrawer
-        open={menuIsOpen}
-        onOpen={() => setMenuOpen(true)}
-        onClose={() => setMenuOpen(false)}
-      >
-        <Typography>Yeet</Typography>
-      </SwipeableDrawer>
-*/
+}));
+
 const App: React.FC = () => {
-  const classes = useStyle();
+  const theme = useTheme();
+  const classes = useStyles(theme);
 
   return (
     <Container>
       <MenuButton className={classes.menuButton} />
       <MainContent className={classes.content} />
+      <DrawerContent className={classes.drawer} />
     </Container>
   );
 };

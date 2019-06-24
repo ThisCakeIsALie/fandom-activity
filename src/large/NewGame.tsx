@@ -2,6 +2,7 @@ import React from "react";
 import { Typography, Grid } from "@material-ui/core";
 import { ClassProp } from "../CommonProps";
 import ActivityLogo from "../small/ActivityLogo";
+import GuideText from "../small/GuideText";
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles({
@@ -22,7 +23,7 @@ const NewGame: React.FC<ClassProp> = ({ className }) => {
       container
     >
       <ActivityLogo className={classes.logo} />
-      <Typography>Click to start!</Typography>
+      <GuideText text="Click to continue!" />
     </Grid>
   );
 };
