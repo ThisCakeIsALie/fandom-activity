@@ -3,6 +3,7 @@ import { Grid, Typography } from "@material-ui/core";
 import { ClassProp } from "../CommonProps";
 import GuideText from "../small/GuideText";
 import { usePositionedIndicator } from "../medium/TeamIndicator";
+import NavigationScreen from "../medium/NavigationScreen";
 
 interface NextTurnInfoProps extends ClassProp {
   nextTeam: string;
@@ -27,20 +28,16 @@ const NextTurnInfo: React.FC<NextTurnInfoProps> = ({
   );
 
   return (
-    <Grid
+    <NavigationScreen
       className={className + " " + indicatorParentClass}
-      justify="space-evenly"
-      alignItems="center"
-      direction="column"
-      container
+      navigationHelp="Click to start!"
     >
-      {indicator}
       <Typography variant="h4" align="center">
         It's team {nextTeam}'s turn with...
       </Typography>
       <Typography variant="h2">{nextActivity}</Typography>
-      <GuideText text="Click to start!" />
-    </Grid>
+      {indicator}
+    </NavigationScreen>
   );
 };
 

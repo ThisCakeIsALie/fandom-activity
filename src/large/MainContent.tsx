@@ -8,6 +8,8 @@ import { Typography } from "@material-ui/core";
 import Settings from "./Settings";
 import NextTurnInfo from "./NextTurnInfo";
 import ActiveTurn from "./ActiveTurn";
+import TurnResult from "./TurnResult";
+import WonInfo from "./WonInfo";
 
 const useStyles = makeStyles({
   content: {
@@ -21,7 +23,7 @@ const MainContent: React.FC<ClassProp> = ({ className }) => {
 
   return (
     <div className={className}>
-      <ActiveTurn className={classes.content} currentColor="blue" />
+      <WonInfo className={classes.content} teamName="Blue" teamColor="blue" />
     </div>
   );
 };

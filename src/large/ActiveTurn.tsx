@@ -2,12 +2,26 @@ import React from "react";
 import { ClassProp } from "../CommonProps";
 import { usePositionedIndicator } from "../medium/TeamIndicator";
 import { Grid, Typography } from "@material-ui/core";
+import ActivityType from "../small/ActivityType";
+import { ChatBubble } from "@material-ui/icons";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import ActiveTurnInfo from "../medium/ActiveTurnInfo";
 
 interface ActiveTurnProps extends ClassProp {
   currentColor: string;
 }
 
+const useStyles = makeStyles((theme: Theme) => ({
+  activityType: {
+    "& > *": {
+      padding: theme.spacing(2)
+    }
+  }
+}));
+
 const ActiveTurn: React.FC<ActiveTurnProps> = ({ className, currentColor }) => {
+  const classes = useStyles();
+
   const [indicatorParentClass, indicator] = usePositionedIndicator(
     {
       x: "right",
@@ -18,16 +32,27 @@ const ActiveTurn: React.FC<ActiveTurnProps> = ({ className, currentColor }) => {
       size: "small"
     }
   );
+
   return (
     <Grid
       className={className + " " + indicatorParentClass}
-      justify="space-evenly"
+      justify="space-around"
       alignItems="center"
+      direction="column"
       container
     >
-      <Typography variant="h1">Explain</Typography>
-      <Typography variant="h1">w</Typography>
-      <Typography variant="h1">O</Typography>
+      <ActivityType
+        className={classes.activityType}
+        activityName="Explain..."
+        activityIcon={<ChatBubble fontSize="large" />}
+      />
+      <Typography variant="h1">OwO</Typography>
+      <ActiveTurnInfo
+        timeLeft={{
+          minutes: 13,
+          seconds: 37
+        }}
+      />
       {indicator}
     </Grid>
   );
