@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import MainContent from "./large/MainContent";
 import DrawerContent from "./medium/DrawerContent";
-import { Theme, useTheme } from "@material-ui/core/styles";
+import { Theme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   menuButton: {
@@ -24,8 +24,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 const App: React.FC = () => {
-  const theme = useTheme();
-  const classes = useStyles(theme);
+  const classes = useStyles();
 
   return (
     <Container>

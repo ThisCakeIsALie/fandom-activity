@@ -1,7 +1,7 @@
 import React from "react";
 import { ClassProp } from "../CommonProps";
 import { usePositionedIndicator } from "../medium/TeamIndicator";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 
 interface ActiveTurnProps extends ClassProp {
   currentColor: string;
@@ -14,18 +14,21 @@ const ActiveTurn: React.FC<ActiveTurnProps> = ({ className, currentColor }) => {
       y: "top"
     },
     {
-      teamColor: currentColor
+      teamColor: currentColor,
+      size: "small"
     }
   );
   return (
     <Grid
       className={className + " " + indicatorParentClass}
-      justify="center"
+      justify="space-evenly"
       alignItems="center"
       container
     >
+      <Typography variant="h1">Explain</Typography>
+      <Typography variant="h1">w</Typography>
+      <Typography variant="h1">O</Typography>
       {indicator}
-      <p>test</p>
     </Grid>
   );
 };
